@@ -1,0 +1,22 @@
+server:
+  port: 4001
+feign:
+  hystrix:
+    enabled: true
+# swagger
+swagger:
+  enable: true
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/parrot_example?useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+    username: parrot
+    password: ''
+    hikari:
+      pool-name: 『hikari_thread』
+# mybatis
+mybatis:
+  mapper-locations: classpath:/mapper/*Mapper.xml, classpath:/mapper/*/*Mapper.xml
+  type-aliases-package: com.muscidae.parrot.example.po
+  configuration:
+    map-underscore-to-camel-case: true

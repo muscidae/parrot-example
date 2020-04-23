@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.muscidae.parrot</groupId>
+        <artifactId>parrot</artifactId>
+        <version>${parrot.version}</version>
+        <relativePath>../parrot/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>parrot-example</artifactId>
+    <name>parrot-example</name>
+
+    <dependencies>
+
+        <!-- Parrot-Basic -->
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>parrot-basic</artifactId>
+        </dependency>
+
+        <!-- Parrot-Util -->
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>parrot-util</artifactId>
+        </dependency>
+
+        <!-- Parrot-Rpc -->
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>parrot-rpc</artifactId>
+        </dependency>
+
+        <!-- Parrot-Bean -->
+        <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>parrot-bean</artifactId>
+        </dependency>
+
+        <!-- Nacos-Config -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- Nacos-Discovery -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!-- Swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+
+        <!-- Swagger-Models -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+        </dependency>
+
+        <!-- Mybatis-Plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+        <!-- MySql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <!--<scope>runtime</scope>-->
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.muscidae.parrot.example.ParrotExampleApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <configuration>
+                    <repository>parrot-example</repository>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+</project>
