@@ -42,28 +42,28 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private FastJsonHttpMessageConverter fastConverter(){
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        fastJsonConfig.setCharset(StandardCharsets.UTF_8);
         fastJsonConfig.setSerializerFeatures(
-            DisableCircularReferenceDetect,  //消除对同一对象循环引用
-            WriteMapNullValue  //输出值为null的字段
+                DisableCircularReferenceDetect,  //消除对同一对象循环引用
+                WriteMapNullValue  //输出值为null的字段
         );
         fastConverter.setFastJsonConfig(fastJsonConfig);
-        fastJsonConfig.setCharset(StandardCharsets.UTF_8);
         fastConverter.setSupportedMediaTypes(supportedMediaTypes());
         return fastConverter;
     }
 
     private List<MediaType> supportedMediaTypes(){
         return List.of(
-                    MediaType.APPLICATION_JSON,
-                    MediaType.APPLICATION_FORM_URLENCODED,
-                    MediaType.APPLICATION_PDF,
-                    MediaType.APPLICATION_XML,
-                    MediaType.IMAGE_GIF,
-                    MediaType.IMAGE_JPEG,
-                    MediaType.IMAGE_PNG,
-                    MediaType.TEXT_XML,
-                    MediaType.TEXT_HTML,
-                    MediaType.APPLICATION_OCTET_STREAM
+                MediaType.APPLICATION_JSON,
+                MediaType.APPLICATION_FORM_URLENCODED,
+                MediaType.APPLICATION_PDF,
+                MediaType.APPLICATION_XML,
+                MediaType.IMAGE_GIF,
+                MediaType.IMAGE_JPEG,
+                MediaType.IMAGE_PNG,
+                MediaType.TEXT_XML,
+                MediaType.TEXT_HTML,
+                MediaType.APPLICATION_OCTET_STREAM
         );
     }
 
